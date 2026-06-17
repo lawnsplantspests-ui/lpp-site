@@ -1,0 +1,7 @@
+{
+  "name": "lpp-site",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - nothing to build, files served from ./public'"
+  }
+}
