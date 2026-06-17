@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site.js";
+---
+<BaseLayout
+  title="Get a Quote"
+  description="Request a free quote for lawn care, pest control, plant health care, or honeybee removal in Central Pennsylvania. Call or send a message today."
+  path="/contact/"
+>
+  <section class="section pine-section">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h1>Request a free quote.</h1>
+      <p class="hero-lede">The fastest way to reach a real person is to call.</p>
+      <div class="hero-actions">
+        <a href={`tel:${site.phone.replace(/[^0-9]/g, "")}`} class="btn btn-primary">Call {site.phone}</a>
+        <a href={`mailto:${site.email}`} class="btn btn-outline contact-outline">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap form-wrap">
+      <h2>Or send a message</h2>
+      <!-- ✏️ TO MAKE THIS FORM SEND EMAIL: free services like Formspree or
+           Web3Forms give you a form address. Paste it into the action="" below.
+           Until then, the Call/Email buttons above work perfectly. -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Name<input type="text" name="name" required /></label>
+        <label>Phone<input type="tel" name="phone" /></label>
+        <label>Email<input type="email" name="email" required /></label>
+        <label>What do you need?
+          <select name="service">
+            <option>Lawn care</option>
+            <option>Pest control</option>
+            <option>Plant health care</option>
+            <option>Honeybee removal</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label>Your address / town<input type="text" name="town" /></label>
+        <label>Details<textarea name="message" rows="4"></textarea></label>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-lede { font-size: 1.2rem; }
+  .contact-outline { color: var(--parchment); }
+  .form-wrap { max-width: 38rem; }
+  form { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  label { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  input, select, textarea {
+    font-family: var(--font-body); font-size: 1rem;
+    padding: 0.7rem 0.85rem; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--paper); color: var(--ink);
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--honey); outline: none; }
+  form button { justify-self: start; margin-top: 0.5rem; }
+</style>

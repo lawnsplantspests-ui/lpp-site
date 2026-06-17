@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import QuoteCTA from "../../components/QuoteCTA.astro";
+---
+<BaseLayout
+  title="Pest Control"
+  description="Targeted pest control for Central PA homes — including yellow jacket and stinging-insect treatment — from a licensed applicator who works pollinator-aware."
+  path="/services/pest-control/"
+>
+  <section class="section pine-section">
+    <div class="wrap"><p class="eyebrow">Service</p><h1>Pest Control</h1>
+    <p class="lede">Treatment aimed at the pests that actually cause problems — not blanket spraying.</p></div>
+  </section>
+  <section class="section"><div class="wrap prose">
+    <h2>Targeted, not indiscriminate</h2>
+    <p>Effective pest control starts with identifying what you're actually dealing with. The treatment is matched to the pest and placed where it works — which also means less product where it isn't needed.</p>
+    <h2>Common jobs</h2>
+    <ul>
+      <li>Yellow jacket and stinging-insect nests</li>
+      <li>Ants, spiders, and seasonal invaders</li>
+      <li>Perimeter treatments for the home</li>
+    </ul>
+    <!-- ✏️ EDIT: list your real pest services and any you don't do. -->
+  </div></section>
+  <QuoteCTA heading="Have a pest problem?" />
+</BaseLayout>
+<style>.lede{font-size:1.2rem}.prose{max-width:46rem}.prose ul{padding-left:1.2rem}.prose li{margin-bottom:0.5rem}</style>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import QuoteCTA from "../components/QuoteCTA.astro";
+import { site } from "../data/site.js";
+---
+<BaseLayout
+  title="About & Credentials"
+  description="Meet the licensed applicator behind Lawns Plants & Pests — a PA Department of Agriculture certified pesticide applicator and practicing beekeeper serving Central Pennsylvania."
+  path="/about/"
+>
+  <section class="section pine-section">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h1>A licensed applicator who keeps bees.</h1>
+      <p class="hero-lede">Local, hands-on, and accountable for every application.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap about-grid">
+      <div>
+        <h2>The credentials</h2>
+        <ul class="cred-list">
+          {site.credentials.map((c) => <li>{c}</li>)}
+        </ul>
+        <p style="margin-top:1.25rem">
+          <!-- ✏️ EDIT: add your license/certification numbers here once you're
+               comfortable displaying them. Real, verifiable credentials build
+               more trust than any marketing line. -->
+          PA pesticide applicator certification on file. Fully licensed and
+          insured business operating out of {site.city}, {site.state}.
+        </p>
+      </div>
+      <div>
+        <h2>The bee thing isn't a gimmick</h2>
+        <p>
+          Running a beekeeping operation alongside the application business
+          changes how the work gets done. It means reading the label, timing
+          applications to avoid bloom, and choosing the least-disruptive
+          effective option &mdash; the same integrated pest management (IPM)
+          thinking that keeps a hive healthy.
+        </p>
+        <p>
+          <!-- ✏️ EDIT: tell your own story here — how you got into beekeeping,
+               your VSH/Varroa-hygiene practices, why it matters to customers. -->
+          It's the difference between treating a symptom and managing a
+          landscape.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <QuoteCTA heading="Work with someone who's accountable." />
+</BaseLayout>
+
+<style>
+  .hero-lede { font-size: 1.2rem; }
+  .about-grid { display: grid; gap: 2.5rem; }
+  @media (min-width: 820px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+  .cred-list { padding-left: 0; list-style: none; }
+  .cred-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--line); font-weight: 600; }
+  .cred-list li::before { content: "✓ "; color: var(--honey-deep); font-weight: 700; }
+</style>

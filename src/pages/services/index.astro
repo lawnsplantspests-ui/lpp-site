@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import QuoteCTA from "../../components/QuoteCTA.astro";
+import { services } from "../../data/services.js";
+---
+<BaseLayout
+  title="Our Services"
+  description="Lawn care, pest control, plant health care, and live honeybee removal across Central Pennsylvania — performed by a licensed, insured applicator."
+  path="/services/"
+>
+  <section class="section pine-section">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h1>Care for your lawn, plants, and pest problems.</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-2">
+        {services.map((s) => (
+          <article class="card">
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
+            <a href={`/services/${s.slug}/`}>Learn more &rarr;</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <QuoteCTA />
+</BaseLayout>

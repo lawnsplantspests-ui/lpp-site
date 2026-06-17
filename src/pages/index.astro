@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import QuoteCTA from "../components/QuoteCTA.astro";
+import { site } from "../data/site.js";
+import { services } from "../data/services.js";
+---
+<BaseLayout
+  title="Lawn Care, Pest Control & Plant Health in Central PA"
+  description="Licensed lawn care, pest control, and plant health care serving Harrisburg and Central Pennsylvania. A PA-certified applicator who keeps bees — careful, knowledgeable, local."
+  path="/"
+>
+  <!-- HERO -->
+  <section class="pine-section hero">
+    <div class="wrap">
+      <p class="eyebrow">{site.region} &middot; Licensed &amp; insured</p>
+      <h1>The pest pro<br />who also keeps bees.</h1>
+      <p class="hero-lede">{site.tagline}</p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Request a Quote</a>
+        <a href="/services/" class="btn btn-outline hero-outline">See Services</a>
+      </div>
+      <ul class="chips">
+        {site.credentials.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What we do</p>
+      <h2>Three jobs, done by the same careful hand.</h2>
+      <div class="grid grid-3" style="margin-top:2rem">
+        {services.map((s) => (
+          <article class="card">
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
+            <a href={`/services/${s.slug}/`}>Learn more &rarr;</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section trust">
+    <div class="wrap trust-grid">
+      <div>
+        <p class="eyebrow">Why it matters</p>
+        <h2>Licensed application, with the pollinators in mind.</h2>
+      </div>
+      <div>
+        <p>
+          Anyone can spray a yard. As a Pennsylvania Department of Agriculture
+          certified applicator who also tends honeybee colonies, the work here
+          is done with the training to use the right product, at the right rate,
+          at the right time &mdash; and the judgment to protect the pollinators
+          your landscape depends on.
+        </p>
+        <p style="margin-top:1rem">
+          <a href="/about/" class="btn btn-outline">Meet your applicator &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <QuoteCTA />
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(3.5rem, 9vw, 6.5rem); }
+  .hero-lede { font-size: 1.25rem; max-width: 40ch; margin-top: 0.5rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .hero-outline { color: var(--parchment); }
+  .trust { background: var(--paper); }
+  .trust-grid { display: grid; gap: 1.5rem; }
+  @media (min-width: 820px) { .trust-grid { grid-template-columns: 1fr 1.3fr; } }
+</style>

@@ -1,0 +1,24 @@
+---
+import { site } from "../data/site.js";
+const { heading = "Ready for a healthier lawn?" } = Astro.props;
+---
+<section class="section pine-section cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <p class="eyebrow">Free, no-pressure quote</p>
+      <h2>{heading}</h2>
+      <p>{site.serviceRadiusNote}</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact/" class="btn btn-primary">Request a Quote</a>
+      <a href={`tel:${site.phone.replace(/[^0-9]/g, "")}`} class="btn btn-outline cta-phone">{site.phone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-inner { display: grid; gap: 1.5rem; align-items: center; }
+  @media (min-width: 760px) { .cta-inner { grid-template-columns: 1.6fr 1fr; } }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cta-phone { color: var(--paper); }
+</style>

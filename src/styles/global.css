@@ -1,0 +1,136 @@
+/* ─────────────────────────────────────────────────────────────
+   LPP design system
+   Palette grounded in the brand: pine green (horticulture, trust),
+   honey amber (the beekeeping signature), warm parchment, charcoal.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --pine: #1f3d2f;
+  --pine-deep: #16291f;
+  --honey: #d99a2b;
+  --honey-deep: #b87d1c;
+  --parchment: #f7f4ec;
+  --paper: #fffdf8;
+  --sage: #8a9a7b;
+  --ink: #1a1c19;
+  --ink-soft: #46504a;
+  --line: #e3ddd0;
+
+  --maxw: 72rem;
+  --radius: 14px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Karla", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; max-width: 62ch; }
+
+a { color: var(--pine); }
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+  margin: 0 0 0.75rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: transform 0.12s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--honey); color: var(--pine-deep); }
+.btn-primary:hover { background: var(--honey-deep); }
+.btn-outline { border-color: currentColor; color: var(--pine); background: transparent; }
+
+/* Honeycomb signature divider */
+.comb-rule {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    60deg, transparent 0 12px, var(--honey) 12px 13px),
+    repeating-linear-gradient(-60deg, transparent 0 12px, var(--honey) 12px 13px);
+  opacity: 0.55;
+}
+
+/* Cards */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(31,61,47,0.1); }
+.card h3 { margin-bottom: 0.4rem; }
+.card a { font-weight: 700; text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+
+.grid { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 860px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* Dark (pine) sections */
+.pine-section { background: var(--pine); color: var(--parchment); }
+.pine-section h1, .pine-section h2 { color: var(--paper); }
+.pine-section .eyebrow { color: var(--honey); }
+.pine-section p { color: #d7ddd3; }
+
+/* Credential chips */
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; margin: 1.25rem 0 0; }
+.chips li {
+  font-size: 0.85rem; font-weight: 600;
+  background: rgba(217,154,43,0.14); color: var(--honey);
+  border: 1px solid rgba(217,154,43,0.4);
+  padding: 0.4rem 0.85rem; border-radius: 999px;
+}
+
+/* Accessibility */
+:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto; }
+}
