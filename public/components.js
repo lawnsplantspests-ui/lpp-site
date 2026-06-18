@@ -68,10 +68,11 @@
   </div>
 </footer>`;
 
-  // Inject after DOM is parsed, so they end up at the BOTTOM of the page
-  // (not right after the script tag, which is near the top of body)
+  // Inject nav at the TOP of body, footer at the BOTTOM. Wait for DOM so
+  // both end up in the right place (not right after the script tag).
   function injectChrome() {
-    document.body.insertAdjacentHTML('beforeend', bottomBar + footer);
+    document.body.insertAdjacentHTML('afterbegin', bottomBar);
+    document.body.insertAdjacentHTML('beforeend', footer);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectChrome);

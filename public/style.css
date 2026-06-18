@@ -34,10 +34,10 @@ a:hover { text-decoration: underline; }
 
 img { max-width: 100%; display: block; }
 
-/* ── BOTTOM NAV BAR (moved from top per request) ─────────── */
+/* ── TOP NAV BAR (class name kept for backwards compat) ──── */
 .bottom-nav {
   background: var(--green-dark);
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 .header-inner {
@@ -445,14 +445,15 @@ footer {
   .bottom-nav nav {
     display: none;
     position: absolute;
-    bottom: 72px;
+    top: 72px;
     left: 0;
     right: 0;
     background: var(--green-dark);
     flex-direction: column;
     padding: 12px 16px 20px;
     gap: 2px;
-    box-shadow: 0 -8px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    z-index: 10;
   }
   .bottom-nav nav.open { display: flex; }
   .bottom-nav nav a { font-size: 0.92rem; padding: 10px 12px; }
