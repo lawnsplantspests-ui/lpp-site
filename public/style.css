@@ -534,7 +534,7 @@ footer {
 .hero.has-photo {
   background:
     linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(27,77,46,0.55) 100%),
-    var(--hero-bg) center/cover no-repeat;
+    var(--hero-bg) var(--hero-bg-pos, center) / cover no-repeat;
   min-height: 420px;
   display: flex;
   flex-direction: column;
