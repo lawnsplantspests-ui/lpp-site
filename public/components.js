@@ -47,36 +47,23 @@
   <div class="footer-inner">
     <div class="footer-col">
       <h4>Lawns Plants &amp; Pests LLC</h4>
-      <p style="color:rgba(255,255,255,0.55);line-height:1.6;">Licensed PA Pesticide Applicator &amp; NWCO<br>Serving Central PA since 2005<br><a href="tel:7173793248" style="color:rgba(255,255,255,0.8);">717-379-3248</a></p>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">3506 High St.<br>Harrisburg, PA 17109<br><br><a href="tel:7173793248" style="color:#fff;font-weight:bold;">717-379-3248</a><br><a href="mailto:Lawnsplantspests@gmail.com" style="color:rgba(255,255,255,0.8);">Lawnsplantspests@gmail.com</a></p>
     </div>
     <div class="footer-col">
-      <h4>Services</h4>
-      <a href="pest-control.html">Pest Control</a>
-      <a href="lawn-care.html">Lawn Care</a>
-      <a href="honey-bee-removal.html">Honey Bee Removal</a>
-      <a href="mosquito-tick-control.html">Mosquito &amp; Tick Control</a>
-      <a href="plant-health-care.html">Plant Health Care</a>
-      <a href="nuisance-wildlife.html">Nuisance Wildlife</a>
+      <h4>Hours</h4>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days<br>Service visits: Mon–Sat by appointment<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
     </div>
     <div class="footer-col">
-      <h4>More Services</h4>
-      <a href="pollinator-restoration.html">Pollinator Restoration</a>
-      <a href="agricultural-pest-service.html">Agricultural Pest</a>
-      <a href="aquatic-service.html">Aquatic Service</a>
-      <a href="deer-damage.html">Deer Damage</a>
-      <a href="pest-control.html#stinging-insects">Stinging Insects</a>
+      <h4>Credentials</h4>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB Accredited<br>Working Beekeepers</p>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="articles.html">Articles</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://www.allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
+      <h4>Family of Businesses</h4>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;"><a href="https://www.allemanapiary.com" target="_blank" rel="noopener" style="color:#fff;">The Alleman Apiary</a><br>Honey stand at 3502 High St.<br>Harrisburg, PA 17109</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured · BBB Accredited</span>
+    <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured</span>
     <span><a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
   </div>
 </footer>`;
