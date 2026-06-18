@@ -34,7 +34,7 @@
   const bottomBar = `
 <div class="bottom-nav">
   <div class="header-inner">
-    <a href="index.html" class="logo"><img src="images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC" /></a>
+    <a href="index.html" class="logo"><img src="images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC logo — locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
     <button class="menu-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
