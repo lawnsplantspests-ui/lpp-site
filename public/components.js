@@ -68,6 +68,14 @@
   </div>
 </footer>`;
 
-  // Inject: bottom nav bar then footer at end of body (no top header)
-  document.body.insertAdjacentHTML('beforeend', bottomBar + footer);
+  // Inject after DOM is parsed, so they end up at the BOTTOM of the page
+  // (not right after the script tag, which is near the top of body)
+  function injectChrome() {
+    document.body.insertAdjacentHTML('beforeend', bottomBar + footer);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectChrome);
+  } else {
+    injectChrome();
+  }
 })();
