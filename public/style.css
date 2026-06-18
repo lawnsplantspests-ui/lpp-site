@@ -54,15 +54,33 @@ header {
 }
 
 .logo {
-  font-family: 'Georgia', serif;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: var(--white);
-  line-height: 1.2;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  line-height: 1;
 }
-.logo span { color: var(--amber); }
+.logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
 .logo:hover { text-decoration: none; }
+@media (max-width: 600px) {
+  .logo img { height: 36px; }
+}
+
+.hero-logo {
+  display: block;
+  height: 110px;
+  width: auto;
+  margin: 0 auto 18px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+@media (max-width: 600px) {
+  .hero-logo { height: 80px; margin-bottom: 12px; }
+}
 
 nav { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
 
@@ -264,7 +282,7 @@ li { margin-bottom: 6px; }
   font-weight: bold;
 }
 
-.trust-item::before { content: '✓'; color: var(--green-mid); font-size: 1rem; }
+.trust-item::before { content: ''; }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 .faq-item {

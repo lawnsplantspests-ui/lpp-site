@@ -10,6 +10,7 @@
     { href: 'pollinator-restoration.html', label: 'Pollinators' },
     { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
     { href: 'plant-health-care.html',    label: 'Plant Health Care' },
+    { href: 'deer-damage.html',          label: 'Deer Damage' },
     { href: 'nuisance-wildlife.html',    label: 'Wildlife' },
     { href: 'agricultural-pest-service.html', label: 'Agricultural' },
     { href: 'aquatic-service.html',      label: 'Aquatic' },
@@ -29,7 +30,7 @@
   const header = `
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">Lawns Plants &amp; Pests LLC<br><span>Harrisburg, PA</span></a>
+    <a href="index.html" class="logo"><img src="images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC" /></a>
     <button class="menu-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -59,13 +60,14 @@
       <a href="agricultural-pest-service.html">Agricultural Pest</a>
       <a href="aquatic-service.html">Aquatic Service</a>
       <a href="stinging-insects.html">Stinging Insects</a>
+      <a href="deer-damage.html">Deer Damage</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="https://www.allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary ↗</a>
+      <a href="https://www.allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
     </div>
   </div>
   <div class="footer-bottom">
