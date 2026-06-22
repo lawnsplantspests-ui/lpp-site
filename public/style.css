@@ -56,13 +56,13 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
   line-height: 1;
   background: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 6px 8px;
+  border-radius: 7px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .logo img {
-  height: 44px;
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -72,8 +72,8 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
 }
 @media (max-width: 600px) {
-  .logo { padding: 3px 8px; border-radius: 5px; }
-  .logo img { height: 34px; }
+  .logo { padding: 4px 6px; border-radius: 6px; }
+  .logo img { height: 40px; }
 }
 
 .hero-logo {
