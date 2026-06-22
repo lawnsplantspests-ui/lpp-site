@@ -10,14 +10,15 @@
   const NAV_LINKS = [
     { href: 'pest-control.html',         label: 'Pest Control' },
     { href: 'lawn-care.html',            label: 'Lawn Care' },
-    { href: 'honey-bee-removal.html',    label: 'Honey Bee Removal' },
-    { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
-    { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
     { href: 'plant-health-care.html',    label: 'Plant Health Care' },
+    { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
     { href: 'deer-damage.html',          label: 'Deer Damage' },
     { href: 'nuisance-wildlife.html',    label: 'Wildlife' },
+    { href: 'honey-bee-removal.html',    label: 'Honey Bee Removal' },
+    { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
     { href: 'agricultural-pest-service.html', label: 'Agricultural' },
     { href: 'aquatic-service.html',      label: 'Aquatic' },
+    { href: 'articles.html',             label: 'Articles' },
     { href: 'faq.html',                  label: 'FAQ' },
     { href: 'about.html',                label: 'About' },
     { href: 'contact.html',              label: 'Contact', cls: 'nav-cta' },
@@ -51,11 +52,11 @@
     </div>
     <div class="footer-col">
       <h4>Hours</h4>
-      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days<br>Service visits: Mon–Sat by appointment<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days<br>Service visits: Mon–Fri by appointment<br>Saturdays by emergency request only<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
     </div>
     <div class="footer-col">
       <h4>Credentials</h4>
-      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB A+ Rated<br>Working Beekeepers</p>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB A+ Rated<br>Working Beekeeper</p>
     </div>
   </div>
   <div class="footer-bottom">
