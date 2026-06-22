@@ -37,7 +37,82 @@
   </div>
 </div>
 <div class="content-section">
-  <div class="cards">
+  <h2 style="margin-top:0">Request a Free Quote</h2>
+  <p>Prefer to type than call? Fill out the form below and Devon will get back to you within one business day with pricing and next steps. Phone or text is still fastest for emergencies (active stinging nests, wildlife in living spaces) — for those, call <a href="tel:7173793248">717-379-3248</a>.</p>
+
+  <form class="quote-form" id="quote-form" onsubmit="return submitQuote(event)">
+    <div class="quote-form-row">
+      <div>
+        <label for="qf-name">Your name</label>
+        <input id="qf-name" name="name" type="text" required autocomplete="name">
+      </div>
+      <div>
+        <label for="qf-phone">Phone (best contact)</label>
+        <input id="qf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="717-555-0123">
+      </div>
+    </div>
+    <div class="quote-form-row">
+      <div>
+        <label for="qf-email">Email</label>
+        <input id="qf-email" name="email" type="email" required autocomplete="email">
+      </div>
+      <div>
+        <label for="qf-address">Property address (street + town)</label>
+        <input id="qf-address" name="address" type="text" required autocomplete="street-address" placeholder="123 Main St, Harrisburg">
+      </div>
+    </div>
+    <div>
+      <label for="qf-service">What do you need help with?</label>
+      <select id="qf-service" name="service" required>
+        <option value="">— Pick one —</option>
+        <option>Lawn care</option>
+        <option>Pest control (perimeter)</option>
+        <option>Mosquito &amp; tick control</option>
+        <option>Plant health care (trees &amp; shrubs)</option>
+        <option>Stinging insect / yellow jacket nest</option>
+        <option>Honey bee removal (live)</option>
+        <option>Wildlife removal (NWCO)</option>
+        <option>Deer damage prevention</option>
+        <option>Pollinator restoration</option>
+        <option>Pond / aquatic service</option>
+        <option>Agricultural pest service</option>
+        <option>Conservation &amp; restoration project</option>
+        <option>Multiple services / not sure</option>
+      </select>
+    </div>
+    <div>
+      <label for="qf-notes">Tell us what's going on (optional)</label>
+      <textarea id="qf-notes" name="notes" placeholder="Photos welcome by text. Mention property size, what you've tried, any deadlines, allergies, pets, beekeepers next door, etc."></textarea>
+    </div>
+    <button type="submit">Send the quote request →</button>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0">Submitting opens your email app with the request pre-filled. Click <strong>Send</strong> in your email app to actually send it. You'll hear back within one business day. <em>Real human (Devon) will read it — not a call center.</em></p>
+  </form>
+
+  <script>
+    function submitQuote(e) {
+      e.preventDefault();
+      var f = e.target;
+      var data = new FormData(f);
+      var lines = [
+        'Quote request from lawnsplantspests.com',
+        '',
+        'Name: ' + data.get('name'),
+        'Phone: ' + data.get('phone'),
+        'Email: ' + data.get('email'),
+        'Address: ' + data.get('address'),
+        'Service: ' + data.get('service'),
+        '',
+        'Notes:',
+        data.get('notes') || '(none)',
+      ];
+      var subject = 'Quote request — ' + data.get('service') + ' — ' + data.get('name');
+      var body = encodeURIComponent(lines.join('\n'));
+      window.location.href = 'mailto:Lawnsplantspests@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
+      return false;
+    }
+  </script>
+
+  <div class="cards" style="margin-top:40px">
     <div class="card">
       <h3>Phone &amp; Text</h3>
       <p style="font-size:1.4rem;font-weight:bold;"><a href="tel:7173793248">717-379-3248</a></p>

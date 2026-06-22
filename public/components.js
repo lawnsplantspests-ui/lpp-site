@@ -20,6 +20,7 @@
     { href: 'agricultural-pest-service.html', label: 'Agricultural' },
     { href: 'aquatic-service.html',      label: 'Aquatic' },
     { href: 'articles.html',             label: 'Articles' },
+    { href: 'how-we-compare.html',       label: 'How We Compare' },
     { href: 'faq.html',                  label: 'FAQ' },
     { href: 'about.html',                label: 'About' },
     { href: 'contact.html',              label: 'Contact', cls: 'nav-cta' },
