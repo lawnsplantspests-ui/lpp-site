@@ -55,11 +55,7 @@
     </div>
     <div class="footer-col">
       <h4>Credentials</h4>
-      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB Accredited<br>Working Beekeepers</p>
-    </div>
-    <div class="footer-col">
-      <h4>Family of Businesses</h4>
-      <p style="color:rgba(255,255,255,0.7);line-height:1.7;"><a href="https://www.allemanapiary.com" target="_blank" rel="noopener" style="color:#fff;">The Alleman Apiary</a><br>Honey stand at 3502 High St.<br>Harrisburg, PA 17109</p>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB A+ Rated<br>Working Beekeepers</p>
     </div>
   </div>
   <div class="footer-bottom">
