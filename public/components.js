@@ -11,7 +11,7 @@
     { href: 'pest-control.html',         label: 'Pest Control' },
     { href: 'lawn-care.html',            label: 'Lawn Care' },
     { href: 'honey-bee-removal.html',    label: 'Honey Bee Removal' },
-    { href: 'pollinator-restoration.html', label: 'Pollinators' },
+    { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
     { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
     { href: 'plant-health-care.html',    label: 'Plant Health Care' },
     { href: 'deer-damage.html',          label: 'Deer Damage' },
