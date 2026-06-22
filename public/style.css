@@ -55,21 +55,25 @@ img { max-width: 100%; display: block; }
   align-items: center;
   text-decoration: none;
   line-height: 1;
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 .logo img {
-  height: 54px;
+  height: 48px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-  transition: filter 0.2s, transform 0.2s;
 }
-.logo:hover img {
-  filter: drop-shadow(0 2px 8px rgba(212,130,10,0.5));
+.logo:hover {
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(212,130,10,0.5);
   transform: translateY(-1px);
 }
-.logo:hover { text-decoration: none; }
 @media (max-width: 600px) {
-  .logo img { height: 44px; }
+  .logo { padding: 4px 10px; border-radius: 6px; }
+  .logo img { height: 38px; }
 }
 
 .hero-logo {
