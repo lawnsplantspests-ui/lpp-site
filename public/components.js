@@ -8,12 +8,12 @@
     '<link rel="apple-touch-icon" href="images/lpp-logo-mark.png">');
 
   const NAV_LINKS = [
-    { href: 'pest-control.html',         label: 'Pest Control' },
     { href: 'lawn-care.html',            label: 'Lawn Care' },
     { href: 'plant-health-care.html',    label: 'Plant Health Care' },
+    { href: 'pest-control.html',         label: 'Pest Control' },
     { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
     { href: 'deer-damage.html',          label: 'Deer Damage' },
-    { href: 'nuisance-wildlife.html',    label: 'Wildlife' },
+    { href: 'nuisance-wildlife.html',    label: 'Wildlife Removal' },
     { href: 'honey-bee-removal.html',    label: 'Honey Bee Removal' },
     { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
     { href: 'conservation-restoration.html', label: 'Conservation & Restoration' },
