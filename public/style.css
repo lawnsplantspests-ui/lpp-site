@@ -36,8 +36,8 @@ img { max-width: 100%; display: block; }
 
 /* ── TOP NAV BAR (class name kept for backwards compat) ──── */
 .bottom-nav {
-  background: var(--green-dark);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  background: linear-gradient(180deg, #1f5635 0%, var(--green-dark) 100%);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.35);
 }
 
 .header-inner {
@@ -87,25 +87,36 @@ img { max-width: 100%; display: block; }
   .hero-logo { height: 80px; margin-bottom: 12px; }
 }
 
-nav { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+nav { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
 
 nav a {
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.92);
   font-family: Arial, sans-serif;
-  font-size: 0.78rem;
-  padding: 6px 9px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 8px 13px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius);
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
   white-space: nowrap;
 }
-nav a:hover, nav a.active { background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; }
+nav a:hover, nav a.active {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+  text-decoration: none;
+}
 
 .nav-cta {
   background: var(--amber) !important;
   color: #fff !important;
   font-weight: bold;
-  padding: 7px 14px !important;
+  padding: 8px 16px !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;
   border-radius: var(--radius) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
 }
 .nav-cta:hover { background: #b86f08 !important; }
 
