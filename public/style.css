@@ -41,9 +41,8 @@ img { max-width: 100%; display: block; }
 }
 
 .header-inner {
-  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
