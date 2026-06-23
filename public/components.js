@@ -4,30 +4,30 @@
 (function () {
   // Add favicon globally
   document.head.insertAdjacentHTML('beforeend',
-    '<link rel="icon" type="image/png" href="images/lpp-logo-mark.png">' +
-    '<link rel="apple-touch-icon" href="images/lpp-logo-mark.png">');
+    '<link rel="icon" type="image/png" href="/images/lpp-logo-mark.png">' +
+    '<link rel="apple-touch-icon" href="/images/lpp-logo-mark.png">');
 
   const NAV_LINKS = [
-    { href: 'lawn-care.html',            label: 'Lawn Care' },
-    { href: 'plant-health-care.html',    label: 'Plant Health Care' },
-    { href: 'pest-control.html',         label: 'Pest Control' },
-    { href: 'mosquito-tick-control.html',label: 'Mosquito & Tick' },
-    { href: 'deer-damage.html',          label: 'Deer Damage' },
-    { href: 'nuisance-wildlife.html',    label: 'Wildlife Removal' },
-    { href: 'honey-bee-removal.html',    label: 'Honey Bee Removal' },
-    { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
-    { href: 'conservation-restoration.html', label: 'Conservation & Restoration' },
-    { href: 'agricultural-pest-service.html', label: 'Agricultural' },
-    { href: 'vegetation-management.html', label: 'Right-of-Way' },
-    { href: 'aquatic-service.html',      label: 'Aquatic' },
-    { href: 'articles.html',             label: 'Articles' },
-    { href: 'how-we-compare.html',       label: 'How We Compare' },
-    { href: 'faq.html',                  label: 'FAQ' },
-    { href: 'about.html',                label: 'About' },
-    { href: 'contact.html',              label: 'Contact', cls: 'nav-cta' },
+    { href: '/lawn-care.html',            label: 'Lawn Care' },
+    { href: '/plant-health-care.html',    label: 'Plant Health Care' },
+    { href: '/pest-control.html',         label: 'Pest Control' },
+    { href: '/mosquito-tick-control.html',label: 'Mosquito & Tick' },
+    { href: '/deer-damage.html',          label: 'Deer Damage' },
+    { href: '/nuisance-wildlife.html',    label: 'Wildlife Removal' },
+    { href: '/honey-bee-removal.html',    label: 'Honey Bee Removal' },
+    { href: '/pollinator-restoration.html', label: 'Pollinator Restoration' },
+    { href: '/conservation-restoration.html', label: 'Conservation & Restoration' },
+    { href: '/agricultural-pest-service.html', label: 'Agricultural' },
+    { href: '/vegetation-management.html', label: 'Right-of-Way' },
+    { href: '/aquatic-service.html',      label: 'Aquatic' },
+    { href: '/articles.html',             label: 'Articles' },
+    { href: '/how-we-compare.html',       label: 'How We Compare' },
+    { href: '/faq.html',                  label: 'FAQ' },
+    { href: '/about.html',                label: 'About' },
+    { href: '/contact.html',              label: 'Contact', cls: 'nav-cta' },
   ];
 
-  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  const currentFile = '/' + (window.location.pathname.split('/').pop() || 'index.html');
 
   const navHtml = NAV_LINKS.map(l => {
     const active = currentFile === l.href ? ' active' : '';
@@ -38,7 +38,7 @@
   const bottomBar = `
 <div class="bottom-nav">
   <div class="header-inner">
-    <a href="index.html" class="logo"><img src="images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC logo — locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
+    <a href="/" class="logo"><img src="/images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC logo — locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
     <button class="menu-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -75,16 +75,15 @@
         </a>
       </div>
       <a href="https://g.page/r/CU6D7DdjSKmQEBM/review" target="_blank" rel="noopener">Leave a Google review</a>
+      <a href="https://www.allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured</span>
-    <span><a href="privacy.html">Privacy Policy</a> · <a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
+    <span><a href="/privacy.html">Privacy Policy</a> · <a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
   </div>
 </footer>`;
 
-  // Inject nav at the TOP of body, footer at the BOTTOM. Wait for DOM so
-  // both end up in the right place (not right after the script tag).
   function injectChrome() {
     document.body.insertAdjacentHTML('afterbegin', bottomBar);
     document.body.insertAdjacentHTML('beforeend', footer);
