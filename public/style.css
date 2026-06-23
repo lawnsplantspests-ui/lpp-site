@@ -53,6 +53,7 @@ img { max-width: 100%; display: block; }
 .logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   text-decoration: none;
   line-height: 1;
   background: #fff;
