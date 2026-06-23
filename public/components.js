@@ -78,7 +78,7 @@
   </div>
   <div class="footer-bottom">
     <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured</span>
-    <span><a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
+    <span><a href="privacy.html">Privacy Policy</a> · <a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
   </div>
 </footer>`;
 
