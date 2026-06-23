@@ -18,6 +18,7 @@
     { href: 'pollinator-restoration.html', label: 'Pollinator Restoration' },
     { href: 'conservation-restoration.html', label: 'Conservation & Restoration' },
     { href: 'agricultural-pest-service.html', label: 'Agricultural' },
+    { href: 'vegetation-management.html', label: 'Right-of-Way' },
     { href: 'aquatic-service.html',      label: 'Aquatic' },
     { href: 'articles.html',             label: 'Articles' },
     { href: 'how-we-compare.html',       label: 'How We Compare' },
