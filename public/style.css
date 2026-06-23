@@ -42,11 +42,11 @@ img { max-width: 100%; display: block; }
 
 .header-inner {
   margin: 0 auto;
-  padding: 0 14px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  min-height: 72px;
 }
 
 .logo {
