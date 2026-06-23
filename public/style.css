@@ -535,23 +535,24 @@ footer {
 .footer-bottom a:hover { color: white; }
 
 .social-icons { display: flex; gap: 10px; margin-top: 4px; }
-.social-icon {
+.footer-col a.social-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 38px;
   height: 38px;
+  margin: 0;
   border-radius: 50%;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   color: rgba(255,255,255,0.85);
   transition: background 0.18s, color 0.18s, transform 0.18s, border-color 0.18s;
 }
-.social-icon svg { width: 18px; height: 18px; display: block; }
-.social-icon:hover { transform: translateY(-2px); color: #fff; border-color: rgba(255,255,255,0.5); text-decoration: none; }
-.social-fb:hover { background: #1877F2; border-color: #1877F2; }
-.social-ig:hover { background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%); border-color: transparent; }
-.social-tt:hover { background: #000; border-color: #25F4EE; box-shadow: 2px 2px 0 #FE2C55; }
+.footer-col a.social-icon svg { width: 18px; height: 18px; display: block; }
+.footer-col a.social-icon:hover { transform: translateY(-2px); color: #fff; border-color: rgba(255,255,255,0.5); text-decoration: none; }
+.footer-col a.social-fb:hover { background: #1877F2; border-color: #1877F2; }
+.footer-col a.social-ig:hover { background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%); border-color: transparent; }
+.footer-col a.social-tt:hover { background: #000; border-color: #25F4EE; box-shadow: 2px 2px 0 #FE2C55; }
 
 /* ── UTILITY ─────────────────────────────────────────────── */
 .bg-light { background: var(--bg); }
