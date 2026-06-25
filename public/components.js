@@ -75,12 +75,12 @@
         </a>
       </div>
       <a href="https://g.page/r/CU6D7DdjSKmQEBM/review" target="_blank" rel="noopener">Leave a Google review</a>
-      <a href="https://www.allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
+      <a href="https://allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured</span>
-    <span><a href="/privacy.html">Privacy Policy</a> · <a href="https://www.lawnsplantspests.com">lawnsplantspests.com</a></span>
+    <span><a href="/privacy.html">Privacy Policy</a> · <a href="https://lawnsplantspests.com">lawnsplantspests.com</a></span>
   </div>
 </footer>`;
 
