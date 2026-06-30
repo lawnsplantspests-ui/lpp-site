@@ -73,6 +73,7 @@
     <div class="footer-col">
       <h4>Credentials</h4>
       <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Certified NWCO<br>Fully Insured · BBB A+ Rated<br>Working Beekeeper</p>
+      <a id="COCBadgeURL" href="https://www.chamberofcommerce.com/business-directory/pennsylvania/harrisburg/pest-control-service/2015298459-lawns-plants-pests-llc?source=memberwebsite" target="_blank" rel="noopener" aria-label="Lawns Plants &amp; Pests on ChamberofCommerce.com"><img style="width:auto;height:150px;margin-top:12px;" id="COCBadgeIMG" src="https://coc.codes/images/badge/2015298459" alt="ChamberofCommerce.com member badge for Lawns Plants &amp; Pests LLC"></a>
     </div>
     <div class="footer-col">
       <h4>Follow</h4>
