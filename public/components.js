@@ -90,6 +90,7 @@
       </div>
       <a href="https://g.page/r/CU6D7DdjSKmQEBM/review" target="_blank" rel="noopener">Leave a Google review</a>
       <a href="https://allemanapiary.com" target="_blank" rel="noopener">The Alleman Apiary</a>
+      <a href="https://plentyofpetalspa.com" target="_blank" rel="noopener">Plenty of Petals</a>
     </div>
   </div>
   <div class="footer-bottom">
