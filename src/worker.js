@@ -28,17 +28,24 @@ export default {
 
     try {
       const contentType = response.headers.get("content-type") || "";
-      const userAgent = request.headers.get("user-agent") || "";
-      const cookies = request.headers.get("cookie") || "";
       if (
         request.method === "GET" &&
         response.status === 200 &&
-        contentType.includes("text/html") &&
-        userAgent &&
-        !BOT_RE.test(userAgent) &&
-        !cookies.includes("lpp_owner=1")
+        contentType.includes("text/html")
       ) {
-        ctx.waitUntil(notifyVisit(request, url));
+        const userAgent = request.headers.get("user-agent") || "";
+        const cookies = request.headers.get("cookie") || "";
+        let reason = "queued";
+        if (!userAgent || BOT_RE.test(userAgent)) reason = "bot";
+        else if (cookies.includes("lpp_owner=1")) reason = "owner";
+
+        if (reason === "queued") ctx.waitUntil(notifyVisit(request, url));
+
+        // Debug header (visible in browser dev tools / curl -I):
+        // says whether this page view queued a ping and why not if not
+        const tagged = new Response(response.body, response);
+        tagged.headers.set("x-visit-ping", reason);
+        return tagged;
       }
     } catch (e) {
       // Notification problems must never affect serving the site
@@ -49,20 +56,30 @@ export default {
 };
 
 async function notifyVisit(request, url) {
+  // Dedupe: one notification per visitor per 30 minutes, so a person
+  // browsing several pages doesn't fire a ping for every click.
+  // If the cache misbehaves, send anyway rather than staying silent.
+  let alreadyPinged = false;
   try {
-    // One notification per visitor per 30 minutes, so a person browsing
-    // several pages doesn't fire a ping for every click
     const ip = request.headers.get("cf-connecting-ip") || "unknown";
     const cache = caches.default;
     const dedupeKey = new Request(
       "https://visit-dedupe.lpp-internal.example/" + encodeURIComponent(ip)
     );
-    if (await cache.match(dedupeKey)) return;
-    await cache.put(
-      dedupeKey,
-      new Response("1", { headers: { "Cache-Control": "max-age=1800" } })
-    );
+    if (await cache.match(dedupeKey)) {
+      alreadyPinged = true;
+    } else {
+      await cache.put(
+        dedupeKey,
+        new Response("1", { headers: { "Cache-Control": "max-age=1800" } })
+      );
+    }
+  } catch (e) {
+    // fall through and send
+  }
+  if (alreadyPinged) return;
 
+  try {
     const cf = request.cf || {};
     const city = cf.city || "Somewhere";
     const region = cf.regionCode || cf.region || "";
