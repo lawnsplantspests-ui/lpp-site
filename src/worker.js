@@ -39,7 +39,14 @@ export default {
         if (!userAgent || BOT_RE.test(userAgent)) reason = "bot";
         else if (cookies.includes("lpp_owner=1")) reason = "owner";
 
-        if (reason === "queued") ctx.waitUntil(notifyVisit(request, url));
+        if (reason === "queued") {
+          if (url.searchParams.has("pingtest")) {
+            // Test mode: send synchronously, skip dedupe, report outcome
+            reason = await notifyVisit(request, url, true);
+          } else {
+            ctx.waitUntil(notifyVisit(request, url, false));
+          }
+        }
 
         // Debug header (visible in browser dev tools / curl -I):
         // says whether this page view queued a ping and why not if not
@@ -55,29 +62,24 @@ export default {
   },
 };
 
-async function notifyVisit(request, url) {
+// Returns an outcome string (also used as the x-visit-ping header in
+// test mode): "sent" | "deduped" | "send-failed-<status>" | "error-..."
+async function notifyVisit(request, url, isTest) {
   // Dedupe: one notification per visitor per 30 minutes, so a person
   // browsing several pages doesn't fire a ping for every click.
   // If the cache misbehaves, send anyway rather than staying silent.
-  let alreadyPinged = false;
-  try {
-    const ip = request.headers.get("cf-connecting-ip") || "unknown";
-    const cache = caches.default;
-    const dedupeKey = new Request(
-      "https://visit-dedupe.lpp-internal.example/" + encodeURIComponent(ip)
-    );
-    if (await cache.match(dedupeKey)) {
-      alreadyPinged = true;
-    } else {
-      await cache.put(
-        dedupeKey,
-        new Response("1", { headers: { "Cache-Control": "max-age=1800" } })
-      );
+  const cache = caches.default;
+  const ip = request.headers.get("cf-connecting-ip") || "unknown";
+  const dedupeKey = new Request(
+    "https://visit-dedupe.lpp-internal.example/" + encodeURIComponent(ip)
+  );
+  if (!isTest) {
+    try {
+      if (await cache.match(dedupeKey)) return "deduped";
+    } catch (e) {
+      // fall through and send
     }
-  } catch (e) {
-    // fall through and send
   }
-  if (alreadyPinged) return;
 
   try {
     const cf = request.cf || {};
@@ -92,7 +94,7 @@ async function notifyVisit(request, url) {
         : `${city}, ${country}`;
     const page = url.pathname === "/" ? "home page" : url.pathname;
 
-    await fetch("https://ntfy.sh/" + NTFY_TOPIC, {
+    const resp = await fetch("https://ntfy.sh/" + NTFY_TOPIC, {
       method: "POST",
       headers: {
         Title: "Lawns Plants & Pests site visitor",
@@ -100,7 +102,21 @@ async function notifyVisit(request, url) {
       },
       body: `Someone from ${place} is viewing the site (${page})`,
     });
+    if (!resp.ok) return "send-failed-" + resp.status;
+
+    // Only start the 30-min quiet window after a successful send,
+    // so a failed send doesn't silence the next real visit
+    if (!isTest) {
+      try {
+        await cache.put(
+          dedupeKey,
+          new Response("1", { headers: { "Cache-Control": "max-age=1800" } })
+        );
+      } catch (e) {}
+    }
+    return "sent";
   } catch (e) {
-    // Never let a failed ping break anything
+    const msg = e && e.message ? String(e.message) : "unknown";
+    return "error-" + msg.replace(/[^\x20-\x7E]/g, "").slice(0, 60);
   }
 }
