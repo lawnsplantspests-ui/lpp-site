@@ -101,8 +101,9 @@ async function notifyVisit(request, url, env, isTest) {
       Title: "Lawns Plants & Pests site visitor",
       Tags: "eyes",
     };
-    if (env && env.NTFY_TOKEN) {
-      headers.Authorization = "Bearer " + env.NTFY_TOKEN;
+    const token = env && env.NTFY_TOKEN ? String(env.NTFY_TOKEN).trim() : "";
+    if (token) {
+      headers.Authorization = "Bearer " + token;
     }
     const resp = await fetch("https://ntfy.sh/" + NTFY_TOPIC, {
       method: "POST",
