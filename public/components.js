@@ -21,23 +21,23 @@
     '<link rel="apple-touch-icon" href="/images/lpp-logo-mark.png">');
 
   const NAV_LINKS = [
-    { href: '/lawn-care.html',            label: 'Lawn Care' },
-    { href: '/plant-health-care.html',    label: 'Plant Health Care' },
-    { href: '/pest-control.html',         label: 'Pest Control' },
-    { href: '/mosquito-tick-control.html',label: 'Mosquito & Tick' },
-    { href: '/deer-damage.html',          label: 'Deer Damage' },
-    { href: '/nuisance-wildlife.html',    label: 'Wildlife Removal' },
-    { href: '/honey-bee-removal.html',    label: 'Honey Bee Removal' },
-    { href: '/pollinator-restoration.html', label: 'Pollinator Restoration' },
-    { href: '/conservation-restoration.html', label: 'Conservation & Restoration' },
-    { href: '/agricultural-pest-service.html', label: 'Agricultural' },
-    { href: '/vegetation-management.html', label: 'Right-of-Way' },
-    { href: '/aquatic-service.html',      label: 'Aquatic' },
-    { href: '/articles.html',             label: 'Articles' },
-    { href: '/how-we-compare.html',       label: 'How We Compare' },
-    { href: '/faq.html',                  label: 'FAQ' },
-    { href: '/about.html',                label: 'About' },
-    { href: '/contact.html',              label: 'Contact', cls: 'nav-cta' },
+    { href: '/lawn-care',            label: 'Lawn Care' },
+    { href: '/plant-health-care',    label: 'Plant Health Care' },
+    { href: '/pest-control',         label: 'Pest Control' },
+    { href: '/mosquito-tick-control',label: 'Mosquito & Tick' },
+    { href: '/deer-damage',          label: 'Deer Damage' },
+    { href: '/nuisance-wildlife',    label: 'Wildlife Removal' },
+    { href: '/honey-bee-removal',    label: 'Honey Bee Removal' },
+    { href: '/pollinator-restoration', label: 'Pollinator Restoration' },
+    { href: '/conservation-restoration', label: 'Conservation & Restoration' },
+    { href: '/agricultural-pest-service', label: 'Agricultural' },
+    { href: '/vegetation-management', label: 'Right-of-Way' },
+    { href: '/aquatic-service',      label: 'Aquatic' },
+    { href: '/articles',             label: 'Articles' },
+    { href: '/how-we-compare',       label: 'How We Compare' },
+    { href: '/faq',                  label: 'FAQ' },
+    { href: '/about',                label: 'About' },
+    { href: '/contact',              label: 'Contact', cls: 'nav-cta' },
   ];
 
   const currentFile = '/' + (window.location.pathname.split('/').pop() || 'index.html');
@@ -95,7 +95,7 @@
   </div>
   <div class="footer-bottom">
     <span>©2026 Lawns Plants &amp; Pests LLC · Pennsylvania LLC · Licensed &amp; Insured</span>
-    <span><a href="/privacy.html">Privacy Policy</a> · <a href="https://lawnsplantspests.com">lawnsplantspests.com</a></span>
+    <span><a href="/privacy">Privacy Policy</a> · <a href="https://lawnsplantspests.com">lawnsplantspests.com</a></span>
   </div>
 </footer>`;
 
