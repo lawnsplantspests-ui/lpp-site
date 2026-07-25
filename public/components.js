@@ -34,6 +34,8 @@
     { href: '/vegetation-management', label: 'Right-of-Way' },
     { href: '/aquatic-service',      label: 'Aquatic' },
     { href: '/pest-library',         label: 'Pest Library' },
+    { href: '/wildlife-id-library',  label: 'Wildlife ID' },
+    { href: '/plant-disease-library', label: 'Plant Problems' },
     { href: '/articles',             label: 'Articles' },
     { href: '/how-we-compare',       label: 'How We Compare' },
     { href: '/faq',                  label: 'FAQ' },
