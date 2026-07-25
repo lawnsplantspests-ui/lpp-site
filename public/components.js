@@ -33,6 +33,7 @@
     { href: '/agricultural-pest-service', label: 'Agricultural' },
     { href: '/vegetation-management', label: 'Right-of-Way' },
     { href: '/aquatic-service',      label: 'Aquatic' },
+    { href: '/pest-library',         label: 'Pest Library' },
     { href: '/articles',             label: 'Articles' },
     { href: '/how-we-compare',       label: 'How We Compare' },
     { href: '/faq',                  label: 'FAQ' },
