@@ -9,6 +9,14 @@
 // Skip search engines, crawlers, link previews, and monitoring tools
 const BOT_RE = /bot|crawl|spider|slurp|bing|yandex|duckduck|baidu|facebookexternalhit|whatsapp|telegram|preview|curl|wget|python|java|go-http|headless|lighthouse|pingdom|uptime|monitor|scan|validator/i;
 
+// Data-center / cloud / crawler networks. Visits from these come from
+// servers, not people — automated crawlers that spoof a browser UA to
+// dodge BOT_RE. Matched against Cloudflare's asOrganization (the
+// visitor's network name). Residential ISPs (Comcast, Verizon, Spectrum,
+// AT&T, T-Mobile, Frontier, etc.) never match these, so real local
+// visitors are unaffected.
+const HOSTING_RE = /google|amazon|\baws\b|microsoft|azure|digital\s?ocean|oracle|\bovh\b|hetzner|linode|akamai|fastly|cloudflare|facebook|meta platforms|censys|shodan|palo alto|leaseweb|contabo|vultr|scaleway|alibaba|tencent|huawei|datacamp|\bm247\b|choopa|quadranet|hostwinds|gcore|stackpath|sucuri|bytedance|internet archive|data\s?cent|colocat|hosting|\bcloud\b|\bvps\b|\bllc\b\s*host/i;
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -36,8 +44,10 @@ export default {
       ) {
         const userAgent = request.headers.get("user-agent") || "";
         const cookies = request.headers.get("cookie") || "";
+        const org = (request.cf && request.cf.asOrganization) || "";
         let reason = "queued";
         if (!userAgent || BOT_RE.test(userAgent)) reason = "bot";
+        else if (org && HOSTING_RE.test(org)) reason = "datacenter";
         else if (cookies.includes("lpp_owner=1")) reason = "owner";
 
         if (reason === "queued") {
@@ -100,6 +110,9 @@ async function notifyVisit(request, url, env, isTest) {
           : city
         : `${city}, ${country}`;
     const page = url.pathname === "/" ? "home page" : url.pathname;
+    // Network/ISP name — shown so you can tell a real person (residential
+    // ISP) from a bot that slipped through (a hosting company).
+    const org = (cf.asOrganization || "").toString().trim();
 
     // Send via the Telegram Bot API (reliable from Cloudflare's shared
     // egress IPs). Secrets: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID.
@@ -113,7 +126,9 @@ async function notifyVisit(request, url, env, isTest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: chatId,
-          text: `🔔 Lawns Plants & Pests\nSomeone from ${place} is viewing the site (${page})`,
+          text:
+            `🔔 Lawns Plants & Pests\nSomeone from ${place} is viewing the site (${page})` +
+            (org ? `\n📡 ${org}` : ""),
         }),
       }
     );
