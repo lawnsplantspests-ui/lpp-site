@@ -103,6 +103,24 @@ export default {
         else if (org && HOSTING_RE.test(org)) reason = "datacenter";
         else if (cookies.includes("lpp_owner=1")) reason = "owner";
 
+        // TEMP diagnostic (read via `wrangler tail`): classify every real
+        // page view so we can see what's actually hitting the site. No raw
+        // IP is logged. Remove once the bot question is settled.
+        const cf0 = request.cf || {};
+        console.log(
+          "VISITLOG " +
+            JSON.stringify({
+              r: reason,
+              path: url.pathname,
+              city: cf0.city || "",
+              region: cf0.regionCode || "",
+              org: org,
+              asn: cf0.asn || "",
+              ref: request.headers.get("referer") || "",
+              ua: userAgent.slice(0, 160),
+            })
+        );
+
         if (reason === "queued") {
           if (url.searchParams.has("pingtest")) {
             // Test mode: send synchronously, skip dedupe, report outcome
