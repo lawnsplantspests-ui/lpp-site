@@ -15,7 +15,13 @@ const BOT_RE = /bot|crawl|spider|slurp|bing|yandex|duckduck|baidu|facebookextern
 // visitor's network name). Residential ISPs (Comcast, Verizon, Spectrum,
 // AT&T, T-Mobile, Frontier, etc.) never match these, so real local
 // visitors are unaffected.
-const HOSTING_RE = /google|amazon|\baws\b|microsoft|azure|digital\s?ocean|oracle|\bovh\b|hetzner|linode|akamai|fastly|cloudflare|facebook|meta platforms|censys|shodan|palo alto|leaseweb|contabo|vultr|scaleway|alibaba|tencent|huawei|datacamp|\bm247\b|choopa|quadranet|hostwinds|gcore|stackpath|sucuri|bytedance|internet archive|data\s?cent|colocat|hosting|\bcloud\b|\bvps\b|\bllc\b\s*host/i;
+const HOSTING_RE = /google|amazon|\baws\b|microsoft|azure|digital\s?ocean|oracle|\bovh\b|hetzner|linode|akamai|fastly|cloudflare|facebook|meta platforms|censys|shodan|palo alto|leaseweb|contabo|vultr|scaleway|alibaba|tencent|huawei|datacamp|\bm247\b|choopa|quadranet|hostwinds|gcore|stackpath|sucuri|bytedance|internet archive|data\s?cent|colocat|hosting|\bcloud\b|\bvps\b|\bllc\b\s*host|\bservers?\b|\bseo\b|cogent|\bquay\b|\bpte\b|\bltd\b|\buab\b|\bidc\b|zenlayer|psychz|nforce|worldstream|constant company|dedicated|proxy|\bvpn\b|scraper|scraping|crawler/i;
+
+// Real customers for a Central PA business are in the US. Overseas
+// "visitors" to a Harrisburg pest-control site are scrapers/bots
+// essentially 100% of the time (observed: Seoul, São Paulo, Hanoi,
+// Malmö, Kerkrade — all hosting networks). Skip non-US entirely.
+const NOTIFY_COUNTRY = "US";
 
 // Turn a URL path into a friendly page name, e.g.
 // "/stinging-insects" -> "Stinging Insects page", "/" -> "Home page".
@@ -98,9 +104,11 @@ export default {
         const userAgent = request.headers.get("user-agent") || "";
         const cookies = request.headers.get("cookie") || "";
         const org = (request.cf && request.cf.asOrganization) || "";
+        const country = (request.cf && request.cf.country) || "";
         let reason = "queued";
         if (!userAgent || BOT_RE.test(userAgent)) reason = "bot";
         else if (org && HOSTING_RE.test(org)) reason = "datacenter";
+        else if (country && country !== NOTIFY_COUNTRY) reason = "overseas";
         else if (cookies.includes("lpp_owner=1")) reason = "owner";
 
         // TEMP diagnostic (read via `wrangler tail`): classify every real
