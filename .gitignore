@@ -1,1 +1,3 @@
-﻿.wrangler/
+.wrangler/
+# local-only mockups, not for deploy
+public/preview-*.html
