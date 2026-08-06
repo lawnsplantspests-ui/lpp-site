@@ -758,6 +758,17 @@ footer {
   gap: 20px;
   margin: 32px 0 8px;
 }
+
+/* Once three cards fit per row, an odd count leaves the last row short.
+   A 6-track grid (cards span 2) lets a trailing pair span 3 each so they
+   fill the width, and centers a trailing single. */
+@media (min-width: 1000px) {
+  .reviews { grid-template-columns: repeat(6, 1fr); }
+  .review { grid-column: span 2; }
+  .review:nth-last-child(2):nth-child(3n+1),
+  .review:nth-last-child(2):nth-child(3n+1) ~ .review { grid-column: span 3; }
+  .review:last-child:nth-child(3n+1) { grid-column: 3 / span 2; }
+}
 .review {
   background: var(--white);
   border: 1px solid var(--border);
