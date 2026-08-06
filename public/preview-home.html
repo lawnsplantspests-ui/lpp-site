@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MOCKUP — Homepage Redesign | Lawns Plants &amp; Pests LLC</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ============================================================
+   MOCKUP-ONLY STYLES — new sections borrowed from the template
+   demos, restyled to the LPP palette. Nothing here touches the
+   live style.css yet.
+   ============================================================ */
+
+/* --- mockup banner ------------------------------------------------ */
+.mock-banner {
+  background: #1A1A1A; color: #fff; font-family: Arial, sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.04em; text-align: center;
+  padding: 8px 16px; position: sticky; top: 0; z-index: 999;
+}
+.mock-banner strong { color: var(--amber); }
+
+/* --- 1. HERO STATS  (from Kebonan) -------------------------------- */
+.hero-stats {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0; margin: 28px auto 0; max-width: 760px;
+  background: rgba(0,0,0,0.42);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--radius);
+  backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+.hero-stat {
+  flex: 1 1 140px; padding: 16px 14px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.18);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat .num {
+  display: block; font-family: Arial, sans-serif; font-weight: bold;
+  font-size: 1.75rem; line-height: 1.1; color: var(--amber);
+}
+.hero-stat .lbl {
+  display: block; font-family: Arial, sans-serif; font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px;
+  color: rgba(255,255,255,0.85);
+}
+@media (max-width: 600px) {
+  .hero-stats { max-width: 340px; }
+  .hero-stat { flex: 1 1 50%; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .hero-stat:nth-child(2n) { border-right: none; }
+  .hero-stat .num { font-size: 1.45rem; }
+}
+
+/* --- 2. HOW IT WORKS — 3 steps  (from all four demos) ------------- */
+.steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; margin-top: 32px; position: relative;
+}
+.step { position: relative; padding: 0 22px; text-align: center; }
+.step + .step::before {
+  content: ''; position: absolute; left: 0; top: 26px; bottom: auto;
+  width: 1px; height: calc(100% - 40px); background: var(--border);
+}
+.step-num {
+  width: 54px; height: 54px; margin: 0 auto 14px;
+  border-radius: 50%; background: var(--green-dark); color: #fff;
+  font-family: Arial, sans-serif; font-weight: bold; font-size: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 5px var(--green-light);
+}
+.step h3 { color: var(--green-dark); margin-bottom: 8px; font-size: 1.1rem; }
+.step p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+@media (max-width: 760px) {
+  .steps { grid-template-columns: 1fr; gap: 30px; }
+  .step { padding: 0; }
+  .step + .step::before {
+    left: 50%; top: -16px; width: 60%; height: 1px;
+    transform: translateX(-50%);
+  }
+}
+
+/* --- 3. RECENT WORK gallery  (from Gardenqu / Gardeno) ------------ */
+.work-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px; margin-top: 28px;
+}
+.work-item {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); background: #000;
+}
+.work-item img {
+  width: 100%; height: 240px; object-fit: cover;
+  transition: transform 0.4s ease; opacity: 0.92;
+}
+.work-item:hover img { transform: scale(1.05); opacity: 1; }
+.work-cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 30px 16px 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.82) 60%);
+  color: #fff;
+}
+.work-cap .tag {
+  display: inline-block; font-family: Arial, sans-serif; font-size: 0.66rem;
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: bold;
+  background: var(--amber); color: #fff; padding: 3px 8px;
+  border-radius: 3px; margin-bottom: 8px;
+}
+.work-cap .ttl {
+  display: block; font-size: 1rem; font-weight: bold; line-height: 1.35;
+}
+.work-cap .loc {
+  display: block; font-family: Arial, sans-serif; font-size: 0.78rem;
+  color: rgba(255,255,255,0.78); margin-top: 3px;
+}
+
+/* --- 4. MID-PAGE CTA  (from Gardeno) ------------------------------ */
+.cta-split {
+  display: grid; grid-template-columns: 1.15fr 1fr; align-items: center;
+  gap: 0; margin: 0; background: var(--green-dark); color: #fff;
+}
+.cta-split-text { padding: 46px 42px; }
+.cta-split-text h2 { color: #fff; margin-bottom: 10px; }
+.cta-split-text p {
+  color: rgba(255,255,255,0.85); margin-bottom: 22px; max-width: 46ch;
+}
+.cta-split-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-amber, .btn-ghost {
+  display: inline-block; font-family: Arial, sans-serif; font-weight: bold;
+  font-size: 0.95rem; padding: 14px 26px; border-radius: var(--radius);
+  text-decoration: none; transition: background 0.18s, color 0.18s;
+}
+.btn-amber { background: var(--amber); color: #fff; }
+.btn-amber:hover { background: #b86f08; color: #fff; text-decoration: none; }
+.btn-ghost { border: 2px solid rgba(255,255,255,0.55); color: #fff; }
+.btn-ghost:hover { background: #fff; color: var(--green-dark); text-decoration: none; }
+.cta-split-img { height: 100%; min-height: 300px; }
+.cta-split-img img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 820px) {
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-split-text { padding: 36px 22px; }
+  .cta-split-img { min-height: 220px; }
+}
+
+/* --- 5. numbered "why choose us"  (from Gardeno) ------------------ */
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 30px 40px; margin-top: 28px;
+}
+.why-item { display: flex; gap: 16px; align-items: flex-start; }
+.why-item .n {
+  font-family: Arial, sans-serif; font-weight: bold; font-size: 1.6rem;
+  color: var(--amber); line-height: 1; flex-shrink: 0;
+  border-right: 2px solid var(--border); padding-right: 16px; padding-top: 2px;
+}
+.why-item h3 { color: var(--green-dark); font-size: 1.05rem; margin-bottom: 6px; }
+.why-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+
+/* --- section eyebrow label ---------------------------------------- */
+.eyebrow {
+  display: block; font-family: Arial, sans-serif; font-size: 0.74rem;
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: bold;
+  color: var(--amber); margin-bottom: 8px;
+}
+</style>
+</head>
+<body>
+<script src="components.js"></script>
+
+<div class="mock-banner">
+  <strong>MOCKUP</strong> — proposed homepage layout. Not live. Nothing here is published or indexed.
+</div>
+
+<!-- ============ 1. HERO (existing + stat strip added) ============ -->
+<div class="hero has-photo" style="--hero-bg: url('images/great-lawn-stripes-harrisburg.jpeg');">
+  <div class="hero-badge">PA-Licensed Applicator Since 2005 · LPP LLC Since 2022</div>
+  <h1>Lawn Care, Plant Health Care &amp; Pest Control in Harrisburg, PA</h1>
+  <p>Lawns Plants &amp; Pests LLC is a locally owned, owner-operated, full-service property care company. Licensed Pennsylvania pesticide applicator &amp; certified NWCO. One call solves it all — lawn, pest, plant, mosquito, wildlife, bees, agricultural &amp; aquatic.</p>
+  <a href="tel:7173793248" class="hero-cta">Call or Text 717-379-3248 — Free Estimate</a>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">2005</span><span class="lbl">Licensed Since</span></div>
+    <div class="hero-stat"><span class="num">8</span><span class="lbl">License Categories</span></div>
+    <div class="hero-stat"><span class="num">5</span><span class="lbl">Counties Served</span></div>
+    <div class="hero-stat"><span class="num">A+</span><span class="lbl">BBB Rated</span></div>
+  </div>
+</div>
+
+<!-- ============ 2. TRUST BAR (unchanged) ============ -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <span class="trust-item">PA Licensed Pesticide Applicator Since 2005</span>
+    <span class="trust-item">8 License Categories</span>
+    <span class="trust-item">PA Certified NWCO</span>
+    <span class="trust-item">Fully Insured</span>
+    <span class="trust-item">Working Beekeeper</span>
+    <span class="trust-item">Free Estimates — No Contracts</span>
+  </div>
+</div>
+
+<!-- ============ 3. HOW IT WORKS — NEW ============ -->
+<div class="content-section">
+  <span class="eyebrow">How It Works</span>
+  <h2>Three Steps, No Surprises</h2>
+  <p>You'll know what's wrong, what it costs, and what happens next before anyone treats anything.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Call or Text</h3>
+      <p>Reach 717-379-3248 seven days a week. You get the owner, not a call center. Describe what you're seeing — or send a photo and we'll tell you what it is.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Free On-Site Estimate</h3>
+      <p>We walk the property, identify the actual problem, and give you a written price. If it's something you can handle yourself, we'll say so. No contract, no obligation.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Treatment &amp; Follow-Up</h3>
+      <p>The same licensed applicator who quoted the job does the work. You get a record of what was applied and when to expect results.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4. WHY CHOOSE US — restyled numbered ============ -->
+<div class="bg-light" style="padding: 48px 24px;">
+<div class="container">
+  <span class="eyebrow">Why Us</span>
+  <h2>Why Choose Lawns Plants &amp; Pests LLC</h2>
+  <p>We're not a national chain. We're not a call center. The same person who answers your phone walks your property and does the work — real diagnostic decisions, real local expertise, no high-pressure sales scripts.</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="n">01</div>
+      <div>
+        <h3>20+ Years Licensed in PA</h3>
+        <p>Continuously licensed as a Pennsylvania pesticide applicator since 2005 — over two decades diagnosing properties across Central PA. Not a new franchise. Not a corporate trainee on rotation.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="n">02</div>
+      <div>
+        <h3>Same-Day Emergency Response</h3>
+        <p>Active stinging insect nests, wildlife in living spaces, swarms during bee season — we prioritize emergencies for same-day or next-day response when at all possible.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="n">03</div>
+      <div>
+        <h3>One-Call Solution</h3>
+        <p>Licensed for lawn, pest, plant, mosquito, wildlife, bees, agricultural, and aquatic — all under one license, one phone number, one person who knows your property.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="n">04</div>
+      <div>
+        <h3>A Working Beekeeper Treats Your Property</h3>
+        <p>We run our own apiary, so we choose products, timing, and methods that protect pollinators. If you keep bees, grow fruit trees, or planted for pollinators, that matters.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 5. SERVICES (unchanged) ============ -->
+<div class="content-section">
+  <span class="eyebrow">What We Do</span>
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card"><img class="card-thumb" src="images/nice-turf-grass-harrisburg.jpeg" alt="Close-up of dense, dark-green tall fescue turf on a Harrisburg, PA lawn maintained by Lawns Plants &amp; Pests LLC" loading="lazy" /><h3>Lawn Care</h3><p>Fertilization, weed control, crabgrass pre-emergent, core aeration, overseeding, soil testing, and lawn renovation. Traditional and fully organic programs.</p><a href="lawn-care">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/yellow-jacket-removal-harrisburg.jpeg" alt="Active yellow jacket nest being treated by a licensed PA pesticide applicator at a Harrisburg, PA home" loading="lazy" /><h3>Pest Control</h3><p>Perimeter-based pest control — ants, spiders, yellow jackets, hornets, wasps, fly remediation, and seasonal prevention. No indoor spraying.</p><a href="pest-control">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/in2care-mosquito-station.jpeg" alt="In2Care mosquito control station installed in a Central PA backyard to target Asian tiger mosquitoes" loading="lazy" style="object-position: center 30%;" /><h3>Mosquito &amp; Tick Control</h3><p>Yard barrier treatments, In2Care stations, EcoGuard Plus fully organic applications, and seasonal programs.</p><a href="mosquito-tick-control">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/needle-cast-spruce-harrisburg.jpeg" alt="Browning interior needles from needle cast disease on a Colorado blue spruce in Harrisburg, PA — a common plant health care call" loading="lazy" /><h3>Plant Health Care</h3><p>Insect and disease control for ornamental trees and shrubs, systemic treatments, root zone fertilization, spotted lanternfly management.</p><a href="plant-health-care">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/honey-bees-in-house-harrisburg.jpeg" alt="Established honey bee colony with exposed comb inside a wall void of a Harrisburg, PA home before live relocation" loading="lazy" /><h3>Honey Bee Removal</h3><p>Live honey bee removal and relocation in coordination with The Alleman Apiary. Bees relocated to working hives, never exterminated.</p><a href="honey-bee-removal">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/trapped-squirrel-harrisburg.jpeg" alt="Gray squirrel humanely live-trapped by a PA-certified Nuisance Wildlife Control Operator in Harrisburg" loading="lazy" /><h3>Nuisance Wildlife</h3><p>PA-licensed NWCO services for raccoons, groundhogs, squirrels, skunks, opossums, bats, and snakes. Trapping, removal, exclusion.</p><a href="nuisance-wildlife">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/flowering-cherry-trees-york.jpeg" alt="Flowering cherry trees in bloom in York County, PA providing early-spring nectar and pollen for honey bees and native pollinators" loading="lazy" /><h3>Pollinator Restoration</h3><p>Pollinator-friendly lawn programs, pesticide audits, native plant guidance, and bee-safe mosquito control. The only Central PA pest control company that also runs a working apiary.</p><a href="pollinator-restoration">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/dairy-farm-outside-harrisburg.jpeg" alt="Dairy cattle on a working farm outside Harrisburg, PA — a typical agricultural pest service client for fly control" loading="lazy" /><h3>Agricultural Pest Service</h3><p>Fly control for cattle, poultry mite and louse treatments, sheep and goat parasite control, and varroa mite management for honey bees.</p><a href="agricultural-pest-service">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/deer-damage-row-of-arbs-harrisburg.jpeg" alt="Row of arborvitae stripped bare from the ground up by winter deer browse damage at a Harrisburg, PA home" loading="lazy" /><h3>Deer Damage Repair &amp; Prevention</h3><p>Repellent applications for arborvitae, hostas, yews, and ornamental shrubs. Seasonal prevention programs that protect plants through winter browse season.</p><a href="deer-damage">Learn more →</a></div>
+    <div class="card"><img class="card-thumb" src="images/beautiful-pond-enola.jpeg" alt="Healthy ornamental pond in Enola, PA after professional aquatic weed control and algae management treatment" loading="lazy" /><h3>Pond &amp; Aquatic Service</h3><p>Pond weed control, algae management, and mosquito larvae treatments. Licensed aquatic applicator with PA DEP permitting handled.</p><a href="aquatic-service">Learn more →</a></div>
+  </div>
+</div>
+
+<!-- ============ 6. MID-PAGE CTA — NEW ============ -->
+<div class="cta-split">
+  <div class="cta-split-text">
+    <span class="eyebrow">Free Estimate</span>
+    <h2>Not Sure What You're Looking At?</h2>
+    <p>Send a photo. We'll tell you what it is, whether it needs treating, and what it would cost — before anyone comes out.</p>
+    <div class="cta-split-btns">
+      <a href="tel:7173793248" class="btn-amber">Call or Text 717-379-3248</a>
+      <a href="mailto:Lawnsplantspests@gmail.com" class="btn-ghost">Email a Photo</a>
+    </div>
+  </div>
+  <div class="cta-split-img">
+    <img src="images/devon-alleman.jpeg" alt="Devon Alleman, owner and licensed Pennsylvania pesticide applicator at Lawns Plants &amp; Pests LLC in Harrisburg, PA" loading="lazy" />
+  </div>
+</div>
+
+<!-- ============ 7. RECENT WORK — NEW ============ -->
+<div class="content-section">
+  <span class="eyebrow">Recent Work</span>
+  <h2>Real Jobs, Real Central PA Properties</h2>
+  <p>Every photo on this site is from our own work. No stock images.</p>
+  <div class="work-grid">
+    <div class="work-item">
+      <img src="images/yellow-jacket-removal-harrisburg.jpeg" alt="Active yellow jacket nest treated in a soffit at a Harrisburg, PA home" loading="lazy" />
+      <div class="work-cap"><span class="tag">Stinging Insects</span><span class="ttl">Yellow jacket nest removed from soffit</span><span class="loc">Harrisburg, PA</span></div>
+    </div>
+    <div class="work-item">
+      <img src="images/honey-bees-in-house-harrisburg.jpeg" alt="Honey bee colony with exposed comb inside a wall void before live relocation in Harrisburg, PA" loading="lazy" />
+      <div class="work-cap"><span class="tag">Live Bee Removal</span><span class="ttl">Colony cut out of a wall void and relocated to a working hive</span><span class="loc">Harrisburg, PA</span></div>
+    </div>
+    <div class="work-item">
+      <img src="images/turtles-swimming-restored-pond-enola.jpeg" alt="Turtles swimming in a restored, clear pond in Enola, PA after aquatic weed and algae treatment" loading="lazy" />
+      <div class="work-cap"><span class="tag">Aquatic</span><span class="ttl">Pond restored — algae and weed control</span><span class="loc">Enola, PA</span></div>
+    </div>
+    <div class="work-item">
+      <img src="images/aeration-and-seeding-harrisburg.jpeg" alt="Core aeration and overseeding in progress on a Harrisburg, PA lawn" loading="lazy" />
+      <div class="work-cap"><span class="tag">Lawn Care</span><span class="ttl">Core aeration and overseeding</span><span class="loc">Harrisburg, PA</span></div>
+    </div>
+    <div class="work-item">
+      <img src="images/nwco-squirrel-work-harrisburg.jpeg" alt="NWCO squirrel exclusion and removal work at a Harrisburg, PA home" loading="lazy" />
+      <div class="work-cap"><span class="tag">Wildlife</span><span class="ttl">Squirrel removal and exclusion</span><span class="loc">Harrisburg, PA</span></div>
+    </div>
+    <div class="work-item">
+      <img src="images/deer-damage-row-of-arbs-harrisburg.jpeg" alt="Row of arborvitae stripped by winter deer browse at a Harrisburg, PA property" loading="lazy" />
+      <div class="work-cap"><span class="tag">Deer Damage</span><span class="ttl">Arborvitae stripped by winter browse</span><span class="loc">Harrisburg, PA</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 8. SERVICE AREA (unchanged) ============ -->
+<div class="service-area">
+  <div class="service-area-inner">
+    <h2>Service Area</h2>
+    <p>We serve Dauphin, Cumberland, Lebanon, Perry, and York Counties — including:</p>
+    <p class="town-list">Harrisburg, Paxtang, Penbrook, Steelton, Highspire, Middletown, Hummelstown, Hershey, Palmyra, Annville, Cleona, Lebanon, Grantville, Linglestown, Colonial Park, Susquehanna Township, Lower Paxton, Camp Hill, Mechanicsburg, Lemoyne, New Cumberland, Wormleysburg, Enola, Marysville, Halifax, Millersburg, Elizabethtown, Mount Joy, Mount Wolf, Manchester, Dillsburg, Carlisle, Boiling Springs, and surrounding Central PA communities.</p>
+  </div>
+</div>
+
+<!-- ============ 9. REVIEWS (moved up — was below credentials) ============ -->
+<div class="bg-light" style="padding: 48px 24px;">
+<div class="container">
+  <span class="eyebrow">Reviews</span>
+  <h2>What Our Customers Say</h2>
+  <div class="reviews">
+    <div class="review">
+      <div class="review-stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+      <p class="review-text">"Called Devon and he came to set up the trap for the animal the next day. The animal was caught in less than 24 hrs. He is reliable and great!"</p>
+      <div class="review-by">Yuri Espinal <span class="review-src">· Google review</span></div>
+    </div>
+    <div class="review">
+      <div class="review-stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+      <p class="review-text">"Came out to look at yellow jackets in our soffit and talk through options for mosquitoes, black flies, and carpenter ants. Devon was refreshingly honest about what was worth paying for and what I could handle myself. No upsell, just clear guidance. I really appreciated the transparency and will use them again."</p>
+      <div class="review-by">Jonathan Snavely <span class="review-src">· Google review</span></div>
+    </div>
+  </div>
+  <p class="reviews-note">Reviews from verified customers on Google.</p>
+</div>
+</div>
+
+<!-- ============ 10. CREDENTIALS (unchanged) ============ -->
+<div class="content-section">
+  <span class="eyebrow">Verified</span>
+  <h2>Verified Credentials</h2>
+  <div class="credentials-list">
+    <div class="cred-item"><img class="cred-badge" src="images/harrisburg-magazine-readers-choice-2024.jpeg" alt="Harrisburg Magazine Readers' Choice 2024 award badge — voted by Central PA residents and won by Lawns Plants &amp; Pests LLC" /><div><strong>Harrisburg Magazine Readers' Choice 2024</strong><br>Voted by Central PA residents in Harrisburg Magazine's annual Readers' Choice Awards.</div></div>
+    <div class="cred-item"><div><strong>PA Dept of Agriculture</strong><br>Licensed Commercial Pesticide Applicator since 2005. 8 categories. Verifiable through public records.</div></div>
+    <div class="cred-item"><div><strong>PA Certified NWCO</strong><br>Listed in <a href="https://wildlifehelp.org" target="_blank" rel="noopener">WildlifeHelp.org</a> directory presented by the Northeast Association of Fish and Wildlife Agencies.</div></div>
+    <div class="cred-item"><div><strong>PSBA &amp; CABA Member</strong><br>Listed <a href="https://www.pastatebeekeepers.org/" target="_blank" rel="noopener">Pennsylvania State Beekeepers Association</a> honey bee supplier and <a href="https://cabapa.org" target="_blank" rel="noopener">Capital Area Beekeepers Association</a> swarm collector.</div></div>
+    <div class="cred-item"><div><strong>BBB A+ Rated</strong><br>Lawns Plants &amp; Pests LLC holds an A+ rating with the <a href="https://www.bbb.org/us/pa/harrisburg/profile/pest-control/lawns-plants-pest-llc-0241-236106183" target="_blank" rel="noopener">Better Business Bureau</a>. Trusted by Central PA homeowners.</div></div>
+    <div class="cred-item"><div><strong>Fully Insured</strong><br>Residential, commercial, and agricultural liability coverage.</div></div>
+  </div>
+</div>
+
+<!-- ============ 11. FAQ (unchanged) ============ -->
+<div class="content-section">
+  <span class="eyebrow">Questions</span>
+  <h2>Frequently Asked Questions</h2>
+  <details class="faq-item">
+    <summary class="faq-q">Are you locally owned?</summary>
+    <div class="faq-a">Yes. Lawns Plants &amp; Pests LLC is locally owned and owner-operated. The same person who answers the phone walks your property and applies the treatments. No corporate dispatcher, no call center, no out-of-state ownership.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Are you licensed and insured?</summary>
+    <div class="faq-a">Yes. We are a licensed Pennsylvania pesticide applicator (8 categories including general, agricultural, and aquatic) and a Pennsylvania-certified Nuisance Wildlife Control Operator (NWCO). We carry full liability insurance for residential, commercial, and agricultural work. Licensed continuously since 2005.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Do I need a contract?</summary>
+    <div class="faq-a">No. Every estimate is free with no obligation. Most services are billed per visit — cancel or skip any time. We don't run on the long-term contract model that national chains use.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Why does the "beekeeper" thing matter?</summary>
+    <div class="faq-a">Because we're the rare licensed pesticide applicator who also depends on healthy pollinators for our other business. We choose products, timing, and application methods specifically to protect bees. If you have your own bees, a pollinator garden, or fruit trees, we're the right choice.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">How quickly can you respond?</summary>
+    <div class="faq-a">Routine work books a few days to a week out. For emergencies — active stinging insect nests, wildlife in living spaces, swarms during bee season — we prioritize same-day or next-day response when at all possible.</div>
+  </details>
+</div>
+
+<!-- ============ 12. FINAL CTA (unchanged) ============ -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Get a Free Estimate</h2>
+    <p>Call or text <a href="tel:7173793248" style="color:#fff;">717-379-3248</a> or email <a href="mailto:Lawnsplantspests@gmail.com" style="color:#fff;">Lawnsplantspests@gmail.com</a>. Locally owned. Licensed and insured. Serving Harrisburg, Hershey, Camp Hill, Mechanicsburg, and all of Central PA.</p>
+    <a href="tel:7173793248" class="cta-phone">Call or Text 717-379-3248</a>
+  </div>
+</div>
+
+</body>
+</html>
