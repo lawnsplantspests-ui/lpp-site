@@ -39,6 +39,7 @@
     { href: '/articles',             label: 'Articles' },
     { href: '/how-we-compare',       label: 'How We Compare' },
     { href: '/faq',                  label: 'FAQ' },
+    { href: '/service-areas',        label: 'Service Areas' },
     { href: '/about',                label: 'About' },
     { href: '/contact',              label: 'Contact', cls: 'nav-cta' },
   ];
