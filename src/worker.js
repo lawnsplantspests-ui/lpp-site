@@ -17,6 +17,19 @@ const BOT_RE = /bot|crawl|spider|slurp|bing|yandex|duckduck|baidu|facebookextern
 // visitors are unaffected.
 const HOSTING_RE = /google|amazon|\baws\b|microsoft|azure|digital\s?ocean|oracle|\bovh\b|hetzner|linode|akamai|fastly|cloudflare|facebook|meta platforms|censys|shodan|palo alto|leaseweb|contabo|vultr|scaleway|alibaba|tencent|huawei|datacamp|\bm247\b|choopa|quadranet|hostwinds|gcore|stackpath|sucuri|bytedance|internet archive|data\s?cent|colocat|hosting|\bcloud\b|\bvps\b|\bllc\b\s*host|\bservers?\b|\bseo\b|cogent|\bquay\b|\bpte\b|\bltd\b|\buab\b|\bidc\b|zenlayer|psychz|nforce|worldstream|constant company|dedicated|proxy|\bvpn\b|scraper|scraping|crawler/i;
 
+// Residential-proxy / rotating-proxy networks. A scraper rents these to
+// hit the site from ~20 different US cities in a few minutes (observed
+// 2026-09-27: a burst on the Honey page from Oxylabs, GTT, Web2Objects,
+// Aventice, Sentris, IPSwat, LA-Net, SIA Bite, "Private Customer").
+const PROXY_RE = /oxylabs|bright\s?data|luminati|netnut|iproyal|smartproxy|decodo|\bsoax\b|packetstream|proxyrack|rayobyte|\bgtt\b|web2objects|aventice|sentris|ipswat|la-net|\bsia bite\b|aviation re\b|private customer/i;
+
+// Desktop Linux (not Android, not Chromebook). Almost no real customers
+// browse on it; scrapers use it constantly — the "Linux computer · Google
+// search" pings in that same burst came through normal ISPs.
+function isDesktopLinux(ua) {
+  return /linux/i.test(ua) && !/android|cros/i.test(ua);
+}
+
 // Real customers for a Central PA business are in the US. Overseas
 // "visitors" to a Harrisburg pest-control site are scrapers/bots
 // essentially 100% of the time (observed: Seoul, São Paulo, Hanoi,
@@ -108,6 +121,8 @@ export default {
         let reason = "queued";
         if (!userAgent || BOT_RE.test(userAgent)) reason = "bot";
         else if (org && HOSTING_RE.test(org)) reason = "datacenter";
+        else if (org && PROXY_RE.test(org)) reason = "proxy";
+        else if (isDesktopLinux(userAgent)) reason = "linux-desktop";
         else if (country && country !== NOTIFY_COUNTRY) reason = "overseas";
         else if (cookies.includes("lpp_owner=1")) reason = "owner";
 
