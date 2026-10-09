@@ -72,7 +72,7 @@
     </div>
     <div class="footer-col">
       <h4>Hours</h4>
-      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days<br>Service visits: Mon–Fri by appointment<br>Saturdays by emergency request only<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days, until 5 PM<br>Service visits: Mon–Fri by appointment<br>Saturdays by emergency request only<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
     </div>
     <div class="footer-col">
       <h4>Credentials</h4>
