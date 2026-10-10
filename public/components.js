@@ -17,8 +17,8 @@
 
   // Add favicon globally
   document.head.insertAdjacentHTML('beforeend',
-    '<link rel="icon" type="image/png" href="/images/lpp-logo-mark.png">' +
-    '<link rel="apple-touch-icon" href="/images/lpp-logo-mark.png">');
+    '<link rel="icon" type="image/png" href="/images/lpp-logo-mark-nav.png">' +
+    '<link rel="apple-touch-icon" href="/images/lpp-logo-mark-nav.png">');
 
   const NAV_LINKS = [
     { href: '/lawn-care',            label: 'Lawn Care' },
@@ -55,7 +55,7 @@
   const bottomBar = `
 <div class="bottom-nav">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/lpp-logo-mark.png" alt="Lawns Plants & Pests LLC logo — locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
+    <a href="/" class="logo"><img src="/images/lpp-logo-mark-nav.png" alt="Lawns Plants & Pests LLC logo — locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
     <button class="menu-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
