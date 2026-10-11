@@ -844,3 +844,8 @@ footer {
   /* keep the footer clear of the fixed bar */
   body { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* Photo strip with one photo: center it at a readable width */
+.photo-strip.single { grid-template-columns: 1fr; max-width: 700px; }
+.photo-strip.single img { height: 360px; }
+@media (max-width: 640px) { .photo-strip.single img { height: 240px; } }
