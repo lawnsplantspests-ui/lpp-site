@@ -99,6 +99,24 @@ function canonicalUrl(url) {
   return `https://${url.host}${path}${url.search}`;
 }
 
+// Standard security headers on every response (HTTPS-only, no MIME sniffing,
+// no framing by other sites, minimal referrer, no camera/mic/location access).
+const SECURITY_HEADERS = {
+  "Strict-Transport-Security": "max-age=31536000",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+};
+
+function withSecurityHeaders(response) {
+  const secured = new Response(response.body, response);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    if (!secured.headers.has(name)) secured.headers.set(name, value);
+  }
+  return secured;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -148,7 +166,7 @@ export default {
       // Notification problems must never affect serving the site
     }
 
-    return response;
+    return withSecurityHeaders(response);
   },
 };
 
