@@ -15,6 +15,14 @@
     gtag('config', id);
   })();
 
+  // Metricool web analytics pixel — loaded in the background, never added to the page.
+  // referrerPolicy lets Metricool see which page was viewed (the site default sends only the domain).
+  (function () {
+    var px = new Image();
+    px.referrerPolicy = 'no-referrer-when-downgrade';
+    px.src = 'https://tracker.metricool.com/c3po.jpg?hash=4f37dd884475111ad3cf2dc871a61f72';
+  })();
+
   // Add favicon globally
   document.head.insertAdjacentHTML('beforeend',
     '<link rel="icon" type="image/png" href="/images/lpp-logo-mark-nav.png">' +
