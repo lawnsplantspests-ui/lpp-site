@@ -2,8 +2,12 @@
 // Usage: <script src="components.js"></script>
 
 (function () {
+  // Local previews (localhost) aren't real visitors — keep them out of the stats
+  var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+
   // Google Analytics 4 (gtag.js) — injected on every page
   (function () {
+    if (isLocal) return;
     var id = 'G-HWR19LJ0DL';
     var s = document.createElement('script');
     s.async = true;
@@ -18,6 +22,7 @@
   // Metricool web analytics pixel — loaded in the background, never added to the page.
   // referrerPolicy lets Metricool see which page was viewed (the site default sends only the domain).
   (function () {
+    if (isLocal) return;
     var px = new Image();
     px.referrerPolicy = 'no-referrer-when-downgrade';
     px.src = 'https://tracker.metricool.com/c3po.jpg?hash=4f37dd884475111ad3cf2dc871a61f72';
