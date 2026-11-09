@@ -711,6 +711,15 @@ footer {
 @media (max-width: 768px) {
   .hero.has-photo { min-height: 320px; padding: 56px 20px 48px; }
 }
+/* Phones load the 1000px copy (images/small/) when the page sets --hero-bg-sm;
+   added by site-tools/small_images.py. Tablets and desktops keep the full photo. */
+@media (max-width: 600px) {
+  .hero.has-photo {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(27,77,46,0.55) 100%),
+      var(--hero-bg-sm, var(--hero-bg)) var(--hero-bg-pos, center) / cover no-repeat;
+  }
+}
 
 /* Card thumbnails (homepage service grid) */
 .card .card-thumb {
