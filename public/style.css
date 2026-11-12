@@ -831,23 +831,32 @@ footer {
     z-index: 60;
     align-items: center;
     justify-content: center;
-    gap: 9px;
     background: var(--amber);
     color: #fff;
     font-family: Arial, sans-serif;
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: 0.02em;
-    text-decoration: none;
-    padding: 15px 16px;
-    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 -3px 14px rgba(0,0,0,0.28);
     border-top: 1px solid rgba(255,255,255,0.28);
   }
-  .call-bar:link,
-  .call-bar:visited,
-  .call-bar:hover { color: #fff; text-decoration: none; }
-  .call-bar:active { background: #b86f08; }
+  /* two halves: Call (wider, shows the number) and Text */
+  .call-bar a {
+    flex: 1.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 10px;
+    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+  }
+  .call-bar a + a { flex: 1; border-left: 1px solid rgba(255,255,255,0.4); }
+  .call-bar a:link,
+  .call-bar a:visited,
+  .call-bar a:hover { color: #fff; text-decoration: none; }
+  .call-bar a:active { background: #b86f08; }
   .call-bar svg { width: 19px; height: 19px; flex-shrink: 0; }
 
   /* keep the footer clear of the fixed bar */

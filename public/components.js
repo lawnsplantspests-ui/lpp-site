@@ -28,6 +28,25 @@
     px.src = 'https://tracker.metricool.com/c3po.jpg?hash=4f37dd884475111ad3cf2dc871a61f72';
   })();
 
+  // Count phone, text and email taps (and contact-form sends, via window.siteTrack)
+  // as Google Analytics events, so visits can be tied to leads. Added 2026-11-11.
+  window.siteTrack = function (name, params) {
+    if (typeof window.gtag !== 'function') return;
+    params = params || {};
+    params.page_path = location.pathname;
+    params.transport_type = 'beacon';
+    window.gtag('event', name, params);
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var h = a.getAttribute('href');
+    var name = h.indexOf('tel:') === 0 ? 'phone_click' : h.indexOf('sms:') === 0 ? 'text_click' : h.indexOf('mailto:') === 0 ? 'email_click' : '';
+    if (!name) return;
+    var where = a.closest('.call-bar, .callbar') ? 'sticky bar' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'page';
+    window.siteTrack(name, { link_location: where });
+  }, true);
+
   // Add favicon globally
   document.head.insertAdjacentHTML('beforeend',
     '<link rel="icon" type="image/png" href="/images/lpp-logo-mark-nav.png">' +
