@@ -20,16 +20,18 @@
 </head>
 <body>
 <!-- site-header: from partials/header.html, run tools/build_chrome.py -->
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="bottom-nav">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/lpp-logo-mark-nav.png" alt="Lawns Plants & Pests LLC logo, locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
-    <button class="menu-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <a href="/" class="logo"><img src="/images/lpp-logo-mark-nav.png" width="169" height="120" alt="Lawns Plants & Pests LLC logo, locally owned pest control, lawn care, and plant health care in Harrisburg, PA" /></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav" onclick="this.setAttribute('aria-expanded', this.nextElementSibling.classList.toggle('open'))">
       <span></span><span></span><span></span>
     </button>
-    <nav><a href="/lawn-care" data-nav>Lawn Care</a><a href="/plant-health-care" data-nav>Plant Health Care</a><a href="/pest-control" data-nav>Pest Control</a><a href="/mosquito-tick-control" data-nav>Mosquito & Tick</a><a href="/deer-damage" data-nav>Deer Damage</a><a href="/nuisance-wildlife" data-nav>Wildlife Removal</a><a href="/honey-bee-removal" data-nav>Honey Bee Removal</a><a href="/pollinator-restoration" data-nav>Pollinator Restoration</a><a href="/conservation-restoration" data-nav>Conservation & Restoration</a><a href="/agricultural-pest-service" data-nav>Agricultural</a><a href="/vegetation-management" data-nav>Right-of-Way</a><a href="/aquatic-service" data-nav>Aquatic</a><a href="/pest-library" data-nav>Pest Library</a><a href="/wildlife-id-library" data-nav>Wildlife ID</a><a href="/plant-disease-library" data-nav>Plant Problems</a><a href="/articles" data-nav>Articles</a><a href="/how-we-compare" data-nav>How We Compare</a><a href="/faq" data-nav>FAQ</a><a href="/service-areas" data-nav>Service Areas</a><a href="/about" data-nav>About</a><a href="/contact" data-nav class="nav-cta">Contact</a></nav>
+    <nav id="site-nav" aria-label="Main"><a href="/lawn-care" data-nav>Lawn Care</a><a href="/plant-health-care" data-nav>Plant Health Care</a><a href="/pest-control" data-nav>Pest Control</a><a href="/mosquito-tick-control" data-nav>Mosquito & Tick</a><a href="/deer-damage" data-nav>Deer Damage</a><a href="/nuisance-wildlife" data-nav>Wildlife Removal</a><a href="/honey-bee-removal" data-nav>Honey Bee Removal</a><a href="/pollinator-restoration" data-nav>Pollinator Restoration</a><a href="/conservation-restoration" data-nav>Conservation & Restoration</a><a href="/agricultural-pest-service" data-nav>Agricultural</a><a href="/vegetation-management" data-nav>Right-of-Way</a><a href="/aquatic-service" data-nav>Aquatic</a><a href="/pest-library" data-nav>Pest Library</a><a href="/wildlife-id-library" data-nav>Wildlife ID</a><a href="/plant-disease-library" data-nav>Plant Problems</a><a href="/articles" data-nav>Articles</a><a href="/how-we-compare" data-nav>How We Compare</a><a href="/faq" data-nav>FAQ</a><a href="/service-areas" data-nav>Service Areas</a><a href="/about" data-nav>About</a><a href="/contact" data-nav class="nav-cta">Contact</a></nav>
   </div>
 </div>
 <!-- /site-header -->
+<main id="main">
 <script src="components.js"></script>
 
 <div class="hero has-photo" style="--hero-bg: url('images/beautiful-pond-enola.jpeg'); --hero-bg-sm: url('images/small/beautiful-pond-enola.jpeg');">
@@ -107,23 +109,25 @@
   </div>
 </div>
 
+</main>
+
 <!-- site-footer: from partials/footer.html, run tools/build_chrome.py -->
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
-      <h4>Lawns Plants &amp; Pests LLC</h4>
+      <h4 aria-level="2">Lawns Plants &amp; Pests LLC</h4>
       <p style="color:rgba(255,255,255,0.7);line-height:1.7;">3506 High St.<br>Harrisburg, PA 17109<br><br><a href="tel:7173793248" style="color:#fff;font-weight:bold;">717-379-3248</a><br><a href="mailto:Lawnsplantspests@gmail.com" style="color:rgba(255,255,255,0.8);">Lawnsplantspests@gmail.com</a></p>
     </div>
     <div class="footer-col">
-      <h4>Hours</h4>
+      <h4 aria-level="2">Hours</h4>
       <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Phone &amp; text: 7 days, until 5 PM<br>Service visits: Mon–Fri by appointment<br>Saturdays by emergency request only<br>Same-day emergency response for active stinging nests &amp; wildlife in living spaces</p>
     </div>
     <div class="footer-col">
-      <h4>Credentials</h4>
+      <h4 aria-level="2">Credentials</h4>
       <p style="color:rgba(255,255,255,0.7);line-height:1.7;">PA Licensed Pesticide Applicator since 2005<br>8 License Categories<br>PA Game Commission NWCO Permit<br>Fully Insured · BBB A+ Rated<br>Working Beekeeper</p>
     </div>
     <div class="footer-col">
-      <h4>Follow</h4>
+      <h4 aria-level="2">Follow</h4>
       <div class="social-icons">
         <a href="https://www.facebook.com/Lawnsplantspests/" class="social-icon social-fb" aria-label="Lawns Plants &amp; Pests on Facebook" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
@@ -149,8 +153,8 @@
   </div>
 </footer>
 <div class="call-bar" role="group" aria-label="Call or text Lawns Plants &amp; Pests">
-  <a href="tel:7173793248" aria-label="Call Lawns Plants &amp; Pests at 717-379-3248"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 717-379-3248</a>
-  <a href="sms:+17173793248" aria-label="Text Lawns Plants &amp; Pests at 717-379-3248"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Text</a>
+  <a href="tel:7173793248" aria-label="Call 717-379-3248, Lawns Plants &amp; Pests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 717-379-3248</a>
+  <a href="sms:+17173793248" aria-label="Text 717-379-3248, Lawns Plants &amp; Pests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Text</a>
 </div>
 <!-- /site-footer -->
 </body>
